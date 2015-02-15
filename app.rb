@@ -1,14 +1,16 @@
 require 'sinatra'
 require 'json'
 
-data = [{
-  :name => 'test1',
-  :is_done => 'false'
-}]
+data = []
+
+greeting = {
+  :header => 'My test Sinatra API',
+}
 
 get '/' do
+  response['Access-Control-Allow-Origin'] = '*'
   content_type :json
-  data.to_json
+  greeting.to_json
 end
 
 post '/' do
